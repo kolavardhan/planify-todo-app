@@ -1,0 +1,49 @@
+.user-form {
+    margin-top: 20px;
+    height: 120px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.input-container {
+    height: 65px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.label-text {
+    font-size: 18px;
+}
+
+.user-input {
+    padding-left: 10px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.add-btn {
+    height: 30px;
+    width: 60px;
+    border: none;
+    border-radius: 5px;
+    margin-left: auto;
+    background-color: hsl(180, 90%, 48%);
+    color: hsl(0, 0%, 100%);
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.add-btn:active {
+    background-color: hsl(180, 94%, 46%);
+    transform: scale(0.96);
+}
