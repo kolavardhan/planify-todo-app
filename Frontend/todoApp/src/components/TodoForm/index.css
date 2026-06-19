@@ -31,12 +31,12 @@
 }
 
 .add-btn {
-    height: 30px;
-    width: 60px;
+    padding: 5px 16px;
+    font-size: 13px;
     border: none;
     border-radius: 5px;
     margin-left: auto;
-    background-color: hsl(180, 90%, 48%);
+    background-color: hsl(173, 80%, 40%);
     color: hsl(0, 0%, 100%);
     font-weight: 700;
     cursor: pointer;
@@ -44,6 +44,6 @@
 }
 
 .add-btn:active {
-    background-color: hsl(180, 94%, 46%);
+    background-color: hsl(173, 60%, 40%);
     transform: scale(0.96);
 }

@@ -1,4 +1,5 @@
 const todoRoutes = require('./routes/todoRoutes')
+const authRoutes = require('./routes/authRoutes') 
 
 const express = require('express')
 const mongoose = require('mongoose')
@@ -7,18 +8,22 @@ const cors = require('cors')
 
 dotenv.config()
 
-const app = express()
-
+const app = express() 
+ 
 app.use(cors())
-app.use(express.json())
+app.use(express.json()) 
 
 app.use('/todos', todoRoutes)
+app.use('/auth', authRoutes) 
 
 app.get('/', (req, res) => {
     res.send('Server is running')
 })
 
-mongoose.connect(process.env.MONGO_URI)
+console.log(process.env.MONGO_URI)
+console.log(process.env.JWT_SECRET)
+
+mongoose.connect(process.env.MONGO_URI)  
 .then(() => {
     console.log('MongoDB Connected')
 
@@ -29,5 +34,3 @@ mongoose.connect(process.env.MONGO_URI)
 .catch(err => {
     console.error('MongoDB Error:', err)
 })
-
-

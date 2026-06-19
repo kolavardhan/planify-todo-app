@@ -2,16 +2,16 @@ const Todo = require('../models/Todo')
 
 const getTodos = async (req, res) => {
     try {
-        const todos = await Todo.find()
+        const todos = await Todo.find({user: req.user.id}) 
 
         res.status(200).json(todos) // The request was successful, and the server processed it correctly.
     } catch (error) {
         res.status(500).json({ // Something went wrong on the server while processing the request
-            message: error.message
+            message: error.message 
         })
     }
 }
-
+ 
 const createTodo = async (req, res) => {
     try {
 
@@ -22,7 +22,8 @@ const createTodo = async (req, res) => {
         }
 
         const newTodo = await Todo.create({
-            task: req.body.task
+            task: req.body.task,
+            user: req.user.id
         })
 
         res.status(201).json(newTodo) // The server successfully created a new resource
@@ -44,6 +45,13 @@ const getTodoById = async (req, res) => {
             })
         }
 
+        // Check ownership
+        if (todo.user.toString() !== req.user.id) {
+            return res.status(403).json({
+                message: "Access denied"
+            });
+        }
+
         res.status(200).json(todo)
 
     } catch (error) {
@@ -62,6 +70,23 @@ const getTodoById = async (req, res) => {
 
 const updateTodo = async (req, res) => {
     try {
+        // Find the todo
+        const todo = await Todo.findById(req.params.id);
+
+        if (!todo) {
+            return res.status(404).json({
+                message: "Todo not found"
+            });
+        }
+
+        // Check ownership
+        if (todo.user.toString() !== req.user.id) {
+            return res.status(403).json({
+                message: "Access denied"
+            });
+        }
+
+        // Update the todo
         const updatedTodo = await Todo.findByIdAndUpdate(
             req.params.id,
             req.body,
@@ -69,56 +94,63 @@ const updateTodo = async (req, res) => {
                 new: true,
                 runValidators: true
             }
-        )
+        );
 
-        if (!updatedTodo) {
-            return res.status(404).json({
-                message: 'Todo not found'
-            })
-        }
+        res.status(200).json(updatedTodo);
 
-        res.status(200).json(updatedTodo)
     } catch (error) {
 
         if (error.name === "CastError") {
             return res.status(400).json({
                 message: "Invalid Todo Id"
-            })
+            });
         }
 
         res.status(500).json({
             message: error.message
-        })
+        });
     }
-}
+};
 
 const deleteTodo = async (req, res) => {
     try {
-        const deletedTodo = await Todo.findByIdAndDelete(req.params.id)
+        // Find the todo first
+        const todo = await Todo.findById(req.params.id);
 
-        if (!deletedTodo) {
+        // Check if the todo exists
+        if (!todo) {
             return res.status(404).json({
                 message: "Todo not found"
-            })
+            });
         }
+
+        // Check if the logged-in user owns this todo
+        if (todo.user.toString() !== req.user.id) {
+            return res.status(403).json({
+                message: "Access denied"
+            });
+        }
+
+        // Delete the todo
+        const deletedTodo = await Todo.findByIdAndDelete(req.params.id);
 
         res.status(200).json({
             message: "Deleted",
             todo: deletedTodo
-        })
+        });
 
     } catch (error) {
 
         if (error.name === "CastError") {
             return res.status(400).json({
-                message: 'Invalid Todo Id'
-            })
+                message: "Invalid Todo Id"
+            });
         }
 
-        res.status(500).json({
+        res.status(500).json({ 
             message: error.message
-        })
+        });
     }
-}
+};
 
 module.exports = {getTodos, createTodo, getTodoById, updateTodo, deleteTodo}

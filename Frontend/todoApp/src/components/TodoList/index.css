@@ -1,5 +1,6 @@
 .todoList-container {
-    height: auto;
+    min-height: 100px;
+    max-height: auto;
     width: 70%;
     list-style-type: none;
     margin-top: 20px;

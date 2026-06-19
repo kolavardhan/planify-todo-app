@@ -20,7 +20,7 @@ const TodoForm = ({ addTodo }) => {
 
         addTodo(userTask)
 
-        setUserTask('')
+        setUserTask('') 
     }
 
     return (
@@ -32,7 +32,7 @@ const TodoForm = ({ addTodo }) => {
                     type='text'
                     className='user-input'
                     value={userTask}
-                    placeholder='Enter your task...'
+                    placeholder='Enter your task...' 
                     onChange={onChangeUserTask}
                 />
             </div>

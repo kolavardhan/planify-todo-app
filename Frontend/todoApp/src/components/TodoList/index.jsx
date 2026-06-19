@@ -10,4 +10,4 @@ const TodoList = ({ todoList, updateIsChecked, deleteTodo }) => {
     
 }
 
-export default TodoList
+export default TodoList 

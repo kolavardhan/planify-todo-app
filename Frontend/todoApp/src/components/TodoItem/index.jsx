@@ -7,7 +7,7 @@ const TodoItem = ({ todo, updateIsChecked, deleteTodo }) => {
             <div className='form-check'>
                 <input
                     className='form-check-input'
-                    type='checkbox'
+                    type='checkbox' 
                     id={todo._id}
                     checked={todo.checked}
                     onChange={() => updateIsChecked(todo._id)}
