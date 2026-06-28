@@ -5,8 +5,8 @@ import TodoForm from '../../components/TodoForm'
 import TodoList from '../../components/TodoList'
 import './index.css'
 
-function Todo() {
-  const navigate = useNavigate()
+function Todo() {  
+  const navigate = useNavigate() 
 
   const [todoList, updateTodo] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -17,12 +17,12 @@ function Todo() {
   const onclickLogout = () => {
     localStorage.removeItem('token')
     navigate('/')
-  }
+  } 
 
   const getTodos = async () => {
     try {
       setIsLoading(true)
-
+ 
       const token = localStorage.getItem('token')
 
       const response = await fetch('http://localhost:3000/todos', {
@@ -30,7 +30,7 @@ function Todo() {
           Authorization: `Bearer ${token}`
         }
       })
-
+ 
       if (response.status === 401) {
         localStorage.removeItem('token')
         navigate('/')
@@ -43,13 +43,13 @@ function Todo() {
 
       const data = await response.json()
       updateTodo(data)
-
+ 
     } catch (error) {
       console.log(error)
     } finally {
       setIsLoading(false)
     }
-  }
+  } 
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -172,7 +172,7 @@ function Todo() {
       updateTodo(prevState =>
         prevState.filter(eachTodo => eachTodo._id !== id)
       )
- 
+  
     } catch (error) {
       console.log(error)
     } 

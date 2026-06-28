@@ -1,4 +1,4 @@
-const Todo = require('../models/Todo')
+const Todo = require('../models/Todo') 
 
 const getTodos = async (req, res) => {
     try {
@@ -8,11 +8,11 @@ const getTodos = async (req, res) => {
     } catch (error) {
         res.status(500).json({ // Something went wrong on the server while processing the request
             message: error.message 
-        })
+        }) 
     }
 }
  
-const createTodo = async (req, res) => {
+const createTodo = async (req, res) => { 
     try {
 
         if (!req.body.task || req.body.task.trim() === "") {
@@ -41,7 +41,7 @@ const getTodoById = async (req, res) => {
 
         if (!todo) {
             return res.status(404).json({ //The requested resource does not exist
-                message: 'Todo not found'
+                message: 'Todo not found' 
             })
         }
 
@@ -149,8 +149,9 @@ const deleteTodo = async (req, res) => {
 
         res.status(500).json({ 
             message: error.message
-        });
+        }); 
     }
 };
 
 module.exports = {getTodos, createTodo, getTodoById, updateTodo, deleteTodo}
+ 

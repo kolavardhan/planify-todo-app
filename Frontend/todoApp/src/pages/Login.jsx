@@ -5,11 +5,11 @@ function Login () {
     const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState('') 
 
     const capitalizeUsername = (userName) => {
         return userName.split(' ')
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
                 .join(' ')
     }
 
@@ -36,17 +36,17 @@ function Login () {
         console.log(data)
         
         if (!response.ok) {
-            window.alert(data.message)
+            window.alert(data.message) 
             return
-        }
-
+        } 
+ 
         const todoUser = capitalizeUsername(data.userName)
  
         localStorage.setItem('token', data.token) 
-        localStorage.setItem('userName', todoUser)
+        localStorage.setItem('userName', todoUser) 
         localStorage.setItem('userEmail', data.email)
 
-        navigate('/todos')
+        navigate('/todos') 
     }
 
     return (

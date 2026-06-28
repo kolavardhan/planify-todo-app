@@ -6,15 +6,15 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const cors = require('cors')
 
-dotenv.config()
+dotenv.config() 
 
 const app = express() 
- 
+  
 app.use(cors())
 app.use(express.json()) 
-
+ 
 app.use('/todos', todoRoutes)
-app.use('/auth', authRoutes) 
+app.use('/auth', authRoutes)
 
 app.get('/', (req, res) => {
     res.send('Server is running')

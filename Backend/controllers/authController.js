@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const registerUser = async (req, res) => { 
     try {
         const {username, email, password} = req.body
-        if (!username || !email || !password) {
+        if (!username || !email || !password) { 
             return res.status(400).json({
                 message: 'All fields are required'
             })
@@ -19,10 +19,10 @@ const registerUser = async (req, res) => {
         }
 
         const existingEmail = await User.findOne({ email })
-        if (existingEmail) {
+        if (existingEmail) { 
             return res.status(400).json({
                 message: 'Email already exists'
-            })
+            }) 
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
@@ -44,7 +44,7 @@ const registerUser = async (req, res) => {
 } 
 
 const loginUser = async (req, res) => {
-    try {
+    try { 
         const {email, password} = req.body
 
         if (!email || !password) {
@@ -58,11 +58,11 @@ const loginUser = async (req, res) => {
         if (!user) {
             return res.status(400).json({
                 message: 'Invalid email or password'
-            })
+            }) 
         }
 
         const isMatched = await bcrypt.compare(password, user.password)
-
+ 
         if (!isMatched) {
             return res.status(400).json({
                 message: 'Invalid email or password'

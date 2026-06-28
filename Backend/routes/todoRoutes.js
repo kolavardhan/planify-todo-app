@@ -5,7 +5,7 @@ const authMiddleware = require('../middleware/authMiddleware')
 
 const router = express.Router() 
  
-router.get('/', authMiddleware, getTodos)
+router.get('/', authMiddleware, getTodos) 
 
 router.post('/', authMiddleware, createTodo)
 

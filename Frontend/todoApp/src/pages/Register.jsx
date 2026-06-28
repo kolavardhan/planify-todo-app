@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState } from 'react' 
 
 function Register () {
     const navigate = useNavigate()
@@ -19,7 +19,7 @@ function Register () {
                 return
             }
 
-            if (password !== confirmPassword) {
+            if (password !== confirmPassword) { 
                 window.alert('Passwords do not match')
                 return
             }
@@ -45,9 +45,9 @@ function Register () {
                 return 
             } 
 
-            window.alert('Registration successful')
+            window.alert('Registration successful') 
 
-            navigate('/')
+            navigate('/') 
         } catch (error) {
             window.alert('Something went wrong. Please try again.')
             console.error(error)
