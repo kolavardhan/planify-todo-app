@@ -11,8 +11,8 @@ router.post('/', authMiddleware, createTodo)
 
 router.get('/:id', authMiddleware, getTodoById) 
  
-router.patch('/:id', authMiddleware, updateTodo) 
+router.patch('/:id', authMiddleware, updateTodo)
  
 router.delete('/:id', authMiddleware, deleteTodo)
 
-module.exports = router 
+module.exports = router

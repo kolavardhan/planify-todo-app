@@ -4,7 +4,7 @@ import { useState } from 'react'
 function Register () {
     const navigate = useNavigate()
 
-    const [username, setUserName] = useState('')
+    const [username, setUserName] = useState('') 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -32,7 +32,7 @@ function Register () {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    username,
+                    username, 
                     email,
                     password
                 })

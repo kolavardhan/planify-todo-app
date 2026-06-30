@@ -7,7 +7,7 @@ import './index.css'
 
 function Todo() {  
   const navigate = useNavigate() 
-
+ 
   const [todoList, updateTodo] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -109,7 +109,7 @@ function Todo() {
       const response = await fetch(`http://localhost:3000/todos/${id}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json', 
           Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({

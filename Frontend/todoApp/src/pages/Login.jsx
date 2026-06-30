@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-function Login () {
+function Login () { 
     const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
@@ -38,7 +38,7 @@ function Login () {
         if (!response.ok) {
             window.alert(data.message) 
             return
-        } 
+        }
  
         const todoUser = capitalizeUsername(data.userName)
  
