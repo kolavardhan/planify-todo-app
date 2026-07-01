@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
     res.send('Server is running')
 })
 
-console.log(process.env.MONGO_URI)
-console.log(process.env.JWT_SECRET)
+// console.log(process.env.MONGO_URI)
+// console.log(process.env.JWT_SECRET)
 
 mongoose.connect(process.env.MONGO_URI)  
 .then(() => {
